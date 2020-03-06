@@ -1,0 +1,6 @@
+# directories
+/target
+
+# IntelliJ
+.idea
+*.iml
