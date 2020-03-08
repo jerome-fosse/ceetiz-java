@@ -1,8 +1,6 @@
 package fr.gouv.impots.entreprises.domain.model;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.ToString;
 
 import java.util.Map;
 

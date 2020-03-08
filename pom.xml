@@ -15,8 +15,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.source.version>13</java.source.version>
-        <java.target.version>13</java.target.version>
+        <java.source.version>11</java.source.version>
+        <java.target.version>11</java.target.version>
     </properties>
 
     <dependencies>
@@ -63,7 +63,6 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <compilerArgs>--enable-preview</compilerArgs>
                     <source>${java.source.version}</source>
                     <target>${java.target.version}</target>
                 </configuration>
@@ -78,7 +77,6 @@
                     <includes>
                         <include>**/*Test.java</include>
                     </includes>
-                    <argLine>--enable-preview</argLine>
                 </configuration>
             </plugin>
             <plugin>
@@ -88,7 +86,6 @@
                     <includes>
                         <include>**/*IntegrationTest</include>
                     </includes>
-                    <argLine>--enable-preview</argLine>
                 </configuration>
                 <executions>
                     <execution>
@@ -111,7 +108,10 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <jvmArgs>--enable-preview</jvmArgs>
+                    <excludedClasses>
+                        <excludedClass>fr.gouv.impots.entreprises.JCalculatorApplication</excludedClass>
+                        <excludedClass>fr.gouv.impots.entreprises.application.rest.WebfluxConfiguration</excludedClass>
+                    </excludedClasses>
                 </configuration>
             </plugin>
             <plugin>
