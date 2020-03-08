@@ -5,6 +5,7 @@ import fr.gouv.impots.entreprises.domain.model.Adresse;
 import fr.gouv.impots.entreprises.domain.model.Entreprise;
 import fr.gouv.impots.entreprises.domain.model.EntrepriseIndividuelle;
 import fr.gouv.impots.entreprises.domain.model.EntrepriseSAS;
+import fr.gouv.impots.entreprises.domain.spi.EntrepriseInconnueException;
 import fr.gouv.impots.entreprises.domain.spi.EntrepriseRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -79,6 +80,22 @@ public class ImpotsServiceTest {
         assertThat(thrown).isNotNull();
         assertThat(thrown).isInstanceOf(ChiffreAffaireInconnuException.class);
         assertThat(thrown.getMessage()).isEqualTo("le Chiffre d'affaire 2017 pour l'entreprise Entreprise(siret=12345, denomination=World Company) n'est pas disponible");
+    }
+
+
+    @Test
+    @DisplayName("Quand l'entreprise est inconnu alors le calcul de l'impot est impossible est renvoie une erreur")
+    public void calculImpotKOQuandEntrepriseInconnu() {
+        // Etant donné une entreprise dont le chiffre d'affaire 2017 n'est pas connu
+        var siret = "99999";
+
+        // Quand je calcule son impot
+        var thrown = catchThrowable(() -> service.calculerImpotEntreprise(siret, 2017).block());
+
+        // Alors j'ai une erreur
+        assertThat(thrown).isNotNull();
+        assertThat(thrown).isInstanceOf(EntrepriseInconnueException.class);
+        assertThat(thrown.getMessage()).isEqualTo("L'entreprise 99999 est inconnue");
     }
 
     @Test

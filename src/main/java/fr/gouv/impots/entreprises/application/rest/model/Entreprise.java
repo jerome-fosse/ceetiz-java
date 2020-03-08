@@ -14,6 +14,9 @@ public class Entreprise {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Adresse adresse;
 
+    public Entreprise() {
+    }
+
     public Entreprise(String siret, String denomination, String type) {
         this.siret = siret;
         this.denomination = denomination;
