@@ -1,6 +1,6 @@
 package fr.gouv.impots.entreprises;
 
-import fr.gouv.impots.entreprises.domain.DomainImpotService;
+import fr.gouv.impots.entreprises.domain.DefaultImpotService;
 import fr.gouv.impots.entreprises.domain.api.ImpotService;
 import fr.gouv.impots.entreprises.domain.spi.EntrepriseRepository;
 import org.springframework.boot.SpringApplication;
@@ -16,6 +16,6 @@ public class JCalculatorApplication {
 
     @Bean
     public ImpotService impotService(EntrepriseRepository entrepriseRepository) {
-        return new DomainImpotService(entrepriseRepository);
+        return new DefaultImpotService(entrepriseRepository);
     }
 }

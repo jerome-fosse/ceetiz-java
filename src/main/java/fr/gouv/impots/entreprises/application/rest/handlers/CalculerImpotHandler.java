@@ -4,7 +4,7 @@ import fr.gouv.impots.entreprises.application.rest.ImpotServiceAdapter;
 import fr.gouv.impots.entreprises.application.rest.model.CalculerImpotRequest;
 import fr.gouv.impots.entreprises.application.rest.model.CalculerImpotResponse;
 import fr.gouv.impots.entreprises.domain.ChiffreAffaireInconnuException;
-import fr.gouv.impots.entreprises.domain.spi.EntrepriseInconnueException;
+import fr.gouv.impots.entreprises.domain.EntrepriseInconnueException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;

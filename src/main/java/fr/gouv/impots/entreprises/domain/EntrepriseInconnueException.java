@@ -1,4 +1,4 @@
-package fr.gouv.impots.entreprises.domain.spi;
+package fr.gouv.impots.entreprises.domain;
 
 public class EntrepriseInconnueException extends RuntimeException {
 

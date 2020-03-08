@@ -5,7 +5,6 @@ import fr.gouv.impots.entreprises.domain.model.Adresse;
 import fr.gouv.impots.entreprises.domain.model.Entreprise;
 import fr.gouv.impots.entreprises.domain.model.EntrepriseIndividuelle;
 import fr.gouv.impots.entreprises.domain.model.EntrepriseSAS;
-import fr.gouv.impots.entreprises.domain.spi.EntrepriseInconnueException;
 import fr.gouv.impots.entreprises.domain.spi.EntrepriseRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -38,7 +37,7 @@ public class ImpotsServiceTest {
                 }
             }
         };
-        service = new DomainImpotService(repository);
+        service = new DefaultImpotService(repository);
     }
 
     @Test

@@ -1,18 +1,17 @@
 package fr.gouv.impots.entreprises.domain;
 
 import fr.gouv.impots.entreprises.domain.model.Entreprise;
-import fr.gouv.impots.entreprises.domain.spi.EntrepriseInconnueException;
 import fr.gouv.impots.entreprises.domain.spi.EntrepriseRepository;
 import reactor.core.publisher.Mono;
 import reactor.util.function.Tuple2;
 import reactor.util.function.Tuples;
 
-public class DomainImpotService implements fr.gouv.impots.entreprises.domain.api.ImpotService {
+public class DefaultImpotService implements fr.gouv.impots.entreprises.domain.api.ImpotService {
 
     private final ImpotCalculator calculator = new ImpotCalculator();
     private EntrepriseRepository repository;
 
-    public DomainImpotService(EntrepriseRepository repository) {
+    public DefaultImpotService(EntrepriseRepository repository) {
         this.repository = repository;
     }
 
