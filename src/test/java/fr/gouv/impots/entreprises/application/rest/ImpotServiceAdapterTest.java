@@ -47,7 +47,7 @@ public class ImpotServiceAdapterTest {
         assertThat(resp.getT1()).isInstanceOf(fr.gouv.impots.entreprises.application.rest.model.Entreprise.class);
         assertThat(resp.getT1().getSiret()).isEqualTo("12345");
         assertThat(resp.getT1().getDenomination()).isEqualTo("World Company");
-        assertThat(resp.getT1().getType()).isEqualTo(TypeEntreprise.INDIVIDUELLE.name());
+        assertThat(resp.getT1().getType()).isEqualTo("INDIVIDUELLE");
         assertThat(resp.getT1().getAdresse()).isNull();
     }
 
@@ -62,7 +62,7 @@ public class ImpotServiceAdapterTest {
         assertThat(resp.getT1()).isInstanceOf(fr.gouv.impots.entreprises.application.rest.model.Entreprise.class);
         assertThat(resp.getT1().getSiret()).isEqualTo("56789");
         assertThat(resp.getT1().getDenomination()).isEqualTo("World Company");
-        assertThat(resp.getT1().getType()).isEqualTo(TypeEntreprise.SAS.name());
+        assertThat(resp.getT1().getType()).isEqualTo("SAS");
         assertThat(resp.getT1().getAdresse()).isNotNull();
         assertThat(resp.getT1().getAdresse().getRue()).isEqualTo("35 rue Victor Hugo");
         assertThat(resp.getT1().getAdresse().getCodePostal()).isEqualTo("75001");

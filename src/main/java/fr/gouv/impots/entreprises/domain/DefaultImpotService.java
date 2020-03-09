@@ -25,7 +25,7 @@ public class DefaultImpotService implements fr.gouv.impots.entreprises.domain.ap
 
     private Integer calculerImpot(Entreprise entreprise, Integer annee) {
         return entreprise.getChiffreAffaire(annee)
-            .map(ca -> entreprise.getType().impotsAlgorithme.apply(calculator, ca))
+            .map(ca -> entreprise.calculerImpot(annee))
             .orElseThrow(() -> new ChiffreAffaireInconnuException(entreprise, annee));
     }
 }

@@ -32,11 +32,11 @@ public class ImpotServiceAdapter {
     // Java 14 devrait améliorer les choses.
     private Entreprise mapDomainEntrepriseToRestEntreprise(fr.gouv.impots.entreprises.domain.model.Entreprise entreprise) {
         if (entreprise instanceof EntrepriseIndividuelle) {
-            return new Entreprise(entreprise.getSiret(), entreprise.getDenomination(), entreprise.getType().name());
+            return new Entreprise(entreprise.getSiret(), entreprise.getDenomination(), "INDIVIDUELLE");
         } else {
             var sas = (EntrepriseSAS) entreprise;
             var adresse = new Adresse(sas.getAdresse().getRue(), sas.getAdresse().getCodePostal(), sas.getAdresse().getVille());
-            return new Entreprise(sas.getSiret(), sas.getDenomination(), sas.getType().name(), adresse);
+            return new Entreprise(sas.getSiret(), sas.getDenomination(), "SAS", adresse);
         }
     }
 }
