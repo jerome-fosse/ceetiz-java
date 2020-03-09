@@ -62,9 +62,7 @@ Les deux entreprises ont un chiffre d'affaire de 150 000€ en 2018 et 100 000�
 ## Requetes
 - Calcul d'impot pour une entreprise individuelle :
 ```
-curl -X POST http://localhost:8080/impot/calculer \
-  -H "Content-Type: application/json" \
-  --data '{"siret":"12345", "annee":2019}' | jq
+curl -H "Content-Type: application/json" -X POST http://localhost:8080/impot/calculer --data '{"siret":"12345", "annee":2019}' | jq
 
 {
   "entreprise": {
@@ -79,9 +77,7 @@ curl -X POST http://localhost:8080/impot/calculer \
 
 - Calcul d'impot pour une entreprise SAS :
 ```
-curl -X POST http://localhost:8080/impot/calculer \
-  -H "Content-Type: application/json" \
-  --data '{"siret":"56789", "annee":2019}' | jq
+curl -H "Content-Type: application/json" -X POST http://localhost:8080/impot/calculer --data '{"siret":"56789", "annee":2019}' | jq
 
 {
   "entreprise": {
@@ -101,9 +97,7 @@ curl -X POST http://localhost:8080/impot/calculer \
 
 - Calcul en erreur
 ```
-curl -X POST http://localhost:8080/impot/calculer \
-  -H "Content-Type: application/json" \
-  --data '{"siret":"12345", "annee":2017}' | jq
+curl -H "Content-Type: application/json" -X POST http://localhost:8080/impot/calculer --data '{"siret":"12345", "annee":2017}' | jq
 
 {
   "timestamp": 1583698200301,
