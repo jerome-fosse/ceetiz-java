@@ -8,7 +8,6 @@ import reactor.util.function.Tuples;
 
 public class DefaultImpotService implements fr.gouv.impots.entreprises.domain.api.ImpotService {
 
-    private final ImpotCalculator calculator = new ImpotCalculator();
     private EntrepriseRepository repository;
 
     public DefaultImpotService(EntrepriseRepository repository) {
@@ -19,13 +18,7 @@ public class DefaultImpotService implements fr.gouv.impots.entreprises.domain.ap
     public Mono<Tuple2<Entreprise, Integer>> calculerImpotEntreprise(String siret, Integer annee) {
         return repository.chargerEntreprise(siret)
             .switchIfEmpty(Mono.error(new EntrepriseInconnueException(siret)))
-            .map(entreprise -> Tuples.of(entreprise, calculerImpot(entreprise, annee)))
+            .map(entreprise -> Tuples.of(entreprise, entreprise.calculerImpot(annee)))
             ;
-    }
-
-    private Integer calculerImpot(Entreprise entreprise, Integer annee) {
-        return entreprise.getChiffreAffaire(annee)
-            .map(ca -> entreprise.calculerImpot(annee))
-            .orElseThrow(() -> new ChiffreAffaireInconnuException(entreprise, annee));
     }
 }
