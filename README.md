@@ -34,7 +34,7 @@ Se placer à la racine du projet et faire :
 mvn spring-boot:run
 ```
 
-## Jeux de données
+## Jeu de données
 Deux entreprises sont chargées dans le systeme.
 - Une entreprise individuelle :
 ```
